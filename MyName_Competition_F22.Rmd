@@ -1,0 +1,102 @@
+---
+title: "My Data Project "
+author: "Joseph Waldron"
+date: "Fall 2022"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+---
+
+# Introduction to Mydata
+
+Information collected from various sources. Include images if possible.
+
+Example: 
+```{r , echo=FALSE, fig.cap="Boxplot Diagram", out.width = '75%',fig.align = 'center'}
+knitr::include_graphics("week9\\my_project_Competition_f22\\samplegraph.png")
+```
+
+another example using snipe
+
+```{r , echo=FALSE, fig.cap="Snipe Example", out.width = '90%',fig.align = 'center'}
+knitr::include_graphics("week9\\my_project_Competition_f22\\homepage.png")
+```
+
+## Link to your data
+
+Data webpage:  <https://www.kaggle.com/datasets/e0f1c0864a8e70d1640c14acf06ae4980b29811e0a68812447fe417b753f9eb3?resource=download> 
+
+## Questions/ Reasons 
+
+Identify few questions about your data that you would like to address. 
+Reasons that motivated you to select your data
+1. What powerball numbers got chosen the most?
+2. What the average jackpot?
+3. What day do people win most on?
+4. What powerplay was most common?
+5. What was the largest jackpot win?
+
+# Packages
+
+List and Load all packages that will be used in your project and include one line comment explaining the nature of the list.
+For example: (dplyr: to wrangle and manipulate data)
+
+```{r}
+#library(dplyr) #this package is used for data manipulation
+#library(maps) # this package to draw maps
+library(knitr)
+```
+
+# reading the data
+
+include a chunk to read the data and names
+```{r}
+raw_data <- read.csv("week9\\my_project_Competition_f22\\lottery_data.csv")
+```
+
+# Data Wrangling
+
+Clean and label and prepare your data
+Show the size of the data
+numbers of rows and columns
+classes of columns, how many `NA`?
+Print out few lines
+Rename variables of interest if their original name is long
+Any substetting?
+
+```{r}
+#putting all values into variables
+date <- raw_data$date
+date <- as.Date(date)
+weekday <- raw_data$weekday
+winning_numbers <- raw_data$winning_numbers
+powerball <- raw_data$powerball
+powerplay <- raw_data$powerplay
+options(scipen = 999)
+jackpot <- raw_data$jackpot
+head(jackpot)
+cleaned_data <- data.frame(date = date,weekday = weekday, winning_numbers = winning_numbers,
+powerball = powerball, powerplay = powerplay,jackpot = jackpot)
+head(cleaned_data)
+str(cleaned_data)
+```
+
+Include str and summary if possible
+
+# Tables Frequency and proportions
+
+# Visualizations of contengency tables or numerical variables
+
+include variuous plots
+Annotate your plots:title, label axes, nice colors.
+
+# Statistical techniques
+Test your hypothesis
+
+# Conclusions
+
+Highlight the information obtained from your project about the data.
+Include some questions that you wish to investigate further.
+
+
